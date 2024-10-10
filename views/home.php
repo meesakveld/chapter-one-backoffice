@@ -1,13 +1,21 @@
 <h1>Base MVC</h1>
 <p>Welcome to this base mvc project.</p>
 
+<div>
+    <?php
+    print_r($firstAuthor);
+    ?>
+</div>
+
 <ul>
-<?php
-    foreach($books as $book) {
+
+
+    <?php
+    foreach ($books as $book) {
         echo '<ul>';
-            echo '<h2>' . $book->title . '</h2>';
-            echo '<p>€' . $book->price . '</p>';
+        echo '<h2>' . $book->title . '</h2>';
+        echo '<p>€' . $book->price . '</p>';
         echo '</ul>';
     }
-?>
+    ?>
 </ul>

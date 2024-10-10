@@ -21,6 +21,8 @@ class HomeController extends BaseController {
         $status = Status::all();
         $users = User::all();
 
+        $firstAuthor = Author::first();
+
         self::loadView('/home', [
             'title' => 'Homepage',
             'authors'=> $authors,
@@ -30,6 +32,7 @@ class HomeController extends BaseController {
             'publishers'=> $publishers,
             'status'=> $status,
             'users'=> $users,
+            'firstAuthor'=> $firstAuthor
         ]);
     }
 

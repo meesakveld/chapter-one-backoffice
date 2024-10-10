@@ -1,0 +1,77 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    ChapterOne-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^chapterone\.ddev\.site$`)
+      
+      service: "ChapterOne-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "ChapterOne-redirectHttps"
+    ChapterOne-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^chapterone\.ddev\.site$`)
+      
+      service: "ChapterOne-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "ChapterOne-redirectHttps"
+    
+    
+    
+    ChapterOne-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^chapterone\.ddev\.site$`)
+      
+      service: "ChapterOne-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    ChapterOne-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^chapterone\.ddev\.site$`)
+      
+      service: "ChapterOne-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    ChapterOne-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    ChapterOne-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-ChapterOne-web:80
+        
+    ChapterOne-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-ChapterOne-web:8025
+        
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/ChapterOne.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/ChapterOne.key

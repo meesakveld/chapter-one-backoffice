@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tailwind:watch": "echo \"Error: no test specified\" && exit 1"
+    "tailwind:watch": "npx nodemon -e php --exec \"npx tailwindcss -i ./public/css/main.css -o ./public/css/output.css\""
   },
   "repository": {
     "type": "git",

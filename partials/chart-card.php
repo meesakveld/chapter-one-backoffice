@@ -8,10 +8,10 @@
         new Chart(document.getElementById('<?= $id ?>'), {
             type: '<?= $typeOfChard ?>',
             data: {
-                labels: <?php echo json_encode(array_column($arrayOfData, $xAxisVariable)); ?>,
+                labels: <?= json_encode(array_column($arrayOfData, $xAxisVariable)); ?>,
                 datasets: [{
                     label: '<?= $label ?>',
-                    data: <?php echo json_encode(array_column($arrayOfData, $yAxisVariable)); ?>,
+                    data: <?= json_encode(array_column($arrayOfData, $yAxisVariable)); ?>,
                     fill: true,
                     borderColor: '#1E65B8',
                     borderWidth: 3,

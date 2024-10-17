@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\BaseModel;
+use PDO;
 
 class Book extends BaseModel {
 
@@ -19,10 +20,10 @@ class Book extends BaseModel {
     protected function booksWithAuthorAndPublisher() {
         $sql = "
             SELECT 
-                books.title, 
                 books.id,
-                authors.name AS author, 
+                books.title, 
                 authors.id AS author_id, 
+                authors.name AS author, 
                 books.price, 
                 books.stock, 
                 books.published_date AS published, 
@@ -37,8 +38,8 @@ class Book extends BaseModel {
         ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetchAll(PDO::FETCH_CLASS, Book::class);
 
-        return $result ? $result : [];
+        return $result;
     }
 }

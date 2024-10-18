@@ -11,6 +11,7 @@
                     [ 'title' => 'Books', 'url' => '/books', 'active' => true, ],
                     [ 'title' => 'Authors', 'url' => '/authors', 'active' => false, ],
                     [ 'title'=> 'Publishers','url'=> '/publishers', 'active'=> false, ],
+                    [ 'title'=> 'Categories','url'=> '/categories', 'active'=> false, ],
                 ];
                 foreach ($links as $link) {
                     include '../partials/link-card.php';
@@ -28,6 +29,7 @@
                     <tr class="text-c-blue-dark">
                         <th class="text-left border border-c-blue-dark p-2">Title</th>
                         <th class="text-left border border-c-blue-dark p-2"><a href="/authors" class="hover:underline">Author</a></th>
+                        <th class="text-left border border-c-blue-dark p-2"><a href="/categories" class="hover:underline">Categories</a></th>
                         <th class="text-left border border-c-blue-dark p-2">Price</th>
                         <th class="text-left border border-c-blue-dark p-2">Stock</th>
                         <th class="text-left border border-c-blue-dark p-2">Published</th>
@@ -36,7 +38,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($booksWithAuthorAndPublisher as $book) {
+                        foreach ($books as $book) {
                             require '../partials/book-line.php';
                         }
                     ?>

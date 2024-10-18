@@ -6,7 +6,7 @@
             Home
         </a>
         
-        <a href="/books" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Books' || $title === 'Authors' || $title === "Publishers" ? 'font-bold text-c-blue' : '' ?>">
+        <a href="/books" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Books' || $title === 'Authors' || $title === "Publishers" || $title === "Categories" ? 'font-bold text-c-blue' : '' ?>">
             Books
         </a>
         

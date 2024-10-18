@@ -11,6 +11,7 @@
                     [ 'title' => 'Books', 'url' => '/books', 'active' => false, ],
                     [ 'title' => 'Authors', 'url' => '/authors', 'active' => false, ],
                     [ 'title'=> 'Publishers','url'=> '/publishers', 'active'=> true, ],
+                    [ 'title'=> 'Categories','url'=> '/categories', 'active'=> false, ],
                 ];
                 foreach ($links as $link) {
                     include '../partials/link-card.php';

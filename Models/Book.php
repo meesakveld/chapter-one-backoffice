@@ -17,7 +17,7 @@ class Book extends BaseModel {
         return $result ? (int)$result['total_stock'] : 0;
     }
     
-    protected function booksWithAuthorAndPublisher() {
+    protected function booksWithData() {
         $sql = "
             SELECT 
                 books.id,
@@ -28,13 +28,21 @@ class Book extends BaseModel {
                 books.stock, 
                 books.published_date AS published, 
                 publishers.name AS publisher,
-                publishers.id AS publisher_id
+                publishers.id AS publisher_id,
+                GROUP_CONCAT(categories.id SEPARATOR ', ') AS category_ids,
+                GROUP_CONCAT(categories.name SEPARATOR ', ') AS category_names
             FROM 
                 books 
             JOIN 
                 authors ON books.author_id = authors.id 
             JOIN 
-                publishers ON books.publisher_id = publishers.id;
+                publishers ON books.publisher_id = publishers.id
+            JOIN 
+                book_category ON books.id = book_category.book_id
+            JOIN 
+                categories ON book_category.category_id = categories.id
+            GROUP BY 
+                books.id;
         ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();

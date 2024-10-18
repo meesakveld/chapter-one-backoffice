@@ -13,6 +13,7 @@
             <table class="min-w-[1200px] w-full border-collapse border border-c-blue-dark">
                 <thead class="bg-c-blue-very-light">
                     <tr class="text-c-blue-dark">
+                        <th class="text-left border border-c-blue-dark p-2">Fullname</th>
                         <th class="text-left border border-c-blue-dark p-2">Firstname</th>
                         <th class="text-left border border-c-blue-dark p-2">Lastname</th>
                         <th class="text-left border border-c-blue-dark p-2">Email</th>

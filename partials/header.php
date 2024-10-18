@@ -2,9 +2,20 @@
     <a href="/"><img src="/assets/logo.png" alt="Logo Chaptor One"></a>
 
     <nav class="flex gap-4">
-        <a class="hover:text-c-blue transition-colors duration-150" href="/">Home</a>
-        <a class="hover:text-c-blue transition-colors duration-150" href="/books">Books</a>
-        <a class="hover:text-c-blue transition-colors duration-150" href="/users">Users</a>
-        <a class="hover:text-c-blue transition-colors duration-150" href="/orders">Orders</a>
+        <a href="/" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Dashboard' ? 'font-bold text-c-blue' : '' ?>">
+            Home
+        </a>
+        
+        <a href="/books" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Books' || $title === 'Authors' || $title === "Publishers" ? 'font-bold text-c-blue' : '' ?>">
+            Books
+        </a>
+        
+        <a href="/users" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Users' ? 'font-bold text-c-blue' : '' ?>">
+            Users
+        </a>
+        
+        <a href="/orders" class="hover:text-c-blue transition-colors duration-150">
+            Orders
+        </a>
     </nav>
-</header>
+</header> 

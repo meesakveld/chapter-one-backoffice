@@ -14,7 +14,7 @@
             Users
         </a>
         
-        <a href="/orders" class="hover:text-c-blue transition-colors duration-150">
+        <a href="/orders" class="hover:text-c-blue transition-colors duration-150 <?= $title === 'Orders' || $title === 'Statuses' ? 'font-bold text-c-blue' : '' ?>">
             Orders
         </a>
     </nav>

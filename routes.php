@@ -8,3 +8,5 @@ $router->get('/authors','AuthorsController@index');
 $router->get('/publishers','PublishersController@index');
 $router->get('/users','UsersController@index');
 $router->get('/categories','CategoriesController@index');
+$router->get('/orders','OrdersController@index');
+$router->get('/order-statuses','OrderStatusesController@index');

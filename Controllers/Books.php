@@ -19,8 +19,13 @@ class BooksController extends BaseController {
 
     public static function book ($id) {
         $book = Book::bookWithData($id);
+        if (! $book) {
+            self::loadView('/404');
+            return;
+        }
+
         $orders = Order::getOrdersWithBookId($id);
-        
+
         self::loadView('/book', [
             'title' => $book->title,
             'domain' => 'Books',

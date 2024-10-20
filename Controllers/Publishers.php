@@ -12,6 +12,7 @@ class PublishersController extends BaseController {
         
         self::loadView('/publishers', [
             'title' => 'Publishers',
+            'domain' => 'Books',
             'publishers' => $publishers,
         ]);
     }

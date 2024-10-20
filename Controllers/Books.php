@@ -11,7 +11,18 @@ class BooksController extends BaseController {
         
         self::loadView('/books', [
             'title' => 'Books',
+            'domain' => 'Books',
             'books'=> $books,
+        ]);
+    }
+
+    public static function book ($id) {
+        $book = Book::bookWithData($id);
+        
+        self::loadView('/book', [
+            'title' => $book->title,
+            'domain' => 'Books',
+            'book'=> $book,
         ]);
     }
 

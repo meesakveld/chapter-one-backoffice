@@ -12,6 +12,7 @@ class UsersController extends BaseController {
         
         self::loadView('/users', [
             'title' => 'Users',
+            'domain' => 'Users',
             'users' => $users,
         ]);
     }

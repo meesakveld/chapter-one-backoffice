@@ -50,4 +50,44 @@ class Book extends BaseModel {
 
         return $result;
     }
+
+    protected function bookWithData($id) {
+        $sql = "
+            SELECT 
+                books.id,
+                books.title, 
+                authors.id AS author_id, 
+                authors.name AS author, 
+                books.price, 
+                books.stock, 
+                books.published_date AS published, 
+                publishers.name AS publisher,
+                publishers.id AS publisher_id,
+                GROUP_CONCAT(categories.id SEPARATOR ', ') AS category_ids,
+                GROUP_CONCAT(categories.name SEPARATOR ', ') AS category_names
+            FROM 
+                books 
+            JOIN 
+                authors ON books.author_id = authors.id 
+            JOIN 
+                publishers ON books.publisher_id = publishers.id
+            JOIN 
+                book_category ON books.id = book_category.book_id
+            JOIN 
+                categories ON book_category.category_id = categories.id
+            WHERE 
+                books.id = :id
+            GROUP BY 
+                books.id;
+        ";
+        $params = [
+            'id' => $id
+        ];
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+        $result = $stmt->fetchObject(Book::class);
+
+        return $result;
+    }
 }

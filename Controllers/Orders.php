@@ -12,6 +12,7 @@ class OrdersController extends BaseController {
         
         self::loadView('/orders', [
             'title' => 'Orders',
+            'domain' => 'Orders',
             'orders' => $orders,
         ]);
     }

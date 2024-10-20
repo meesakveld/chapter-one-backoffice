@@ -17,6 +17,7 @@ class HomeController extends BaseController {
 
         self::loadView('/home', [
             'title' => 'Dashboard',
+            'domain' => 'Home',
             'totalSales'=> $totalSales,
             'totalBooksSold'=> $totalBooksSold,
             'totalUsers'=> $totalUsers,

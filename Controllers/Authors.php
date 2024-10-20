@@ -12,6 +12,7 @@ class AuthorsController extends BaseController {
         
         self::loadView('/authors', [
             'title' => 'Authors',
+            'domain' => 'Books',
             'authors' => $authors,
         ]);
     }

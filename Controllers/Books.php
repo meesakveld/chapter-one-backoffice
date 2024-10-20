@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Book;
+use App\Models\Order;
 
 class BooksController extends BaseController {
 
@@ -18,11 +19,13 @@ class BooksController extends BaseController {
 
     public static function book ($id) {
         $book = Book::bookWithData($id);
+        $orders = Order::getOrdersWithBookId($id);
         
         self::loadView('/book', [
             'title' => $book->title,
             'domain' => 'Books',
             'book'=> $book,
+            'orders'=> $orders,
         ]);
     }
 

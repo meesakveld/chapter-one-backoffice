@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 
 class UsersController extends BaseController {
@@ -20,11 +21,13 @@ class UsersController extends BaseController {
     public static function user ($id) {
 
         $user = User::find($id);
+        $orders = Order::getOrdersWithUserId($id);
 
         self::loadView('/user/user', [
-            'title' => 'User',
+            'title' => $user->getFullName(),
             'domain' => 'Users',
             'user' => $user,
+            'orders' => $orders,
         ]);
     }
 

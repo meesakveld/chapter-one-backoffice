@@ -17,3 +17,4 @@ $router->get('/order-statuses','OrderStatusesController@index');
 $router->get('/books/(\d+)','BooksController@book');
 $router->get('/authors/(\d+)','AuthorsController@author');
 $router->get('/publishers/(\d+)','PublishersController@publisher');
+$router->get('/categories/(\d+)','CategoriesController@category');

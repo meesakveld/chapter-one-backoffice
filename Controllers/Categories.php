@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Category;
+use App\Models\Book;
 
 class CategoriesController extends BaseController {
 
@@ -13,6 +14,21 @@ class CategoriesController extends BaseController {
             'title' => 'Categories',
             'domain' => 'Books',
             'categories' => $categories,
+        ]);
+    }
+
+    public static function category ($id) {
+        $category = Category::getCategoryWithChildren($id);
+        if (!$category) {
+            self::LoadView('/404');
+        }
+
+        $books = Book::booksWithDataWithCategoryId($category->id);        
+
+        self::loadView('/category', [
+            'title' => $category->name,
+            'category' => $category,
+            'books' => $books,
         ]);
     }
 

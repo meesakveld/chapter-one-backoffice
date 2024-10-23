@@ -33,4 +33,32 @@ class Category extends BaseModel {
         return $result;
     }
 
+    protected function getCategoryWithChildren($id) {
+        $sql = "
+            SELECT 
+                categories.id,
+                categories.name,
+                categories.description,
+                parent_categories.id AS parent_category_id,
+                parent_categories.name AS parent_category_name,
+                GROUP_CONCAT(child_categories.name ORDER BY child_categories.id SEPARATOR ', ') AS children_categories_names,
+                GROUP_CONCAT(child_categories.id ORDER BY child_categories.id SEPARATOR ', ') AS children_categories_ids
+            FROM 
+                categories
+            LEFT JOIN 
+                categories AS parent_categories ON categories.parent_id = parent_categories.id
+            LEFT JOIN 
+                categories AS child_categories ON child_categories.parent_id = categories.id
+            WHERE 
+                categories.id = :id
+            GROUP BY 
+                categories.id;
+        ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetchObject(Category::class);
+
+        return $result;
+    }
+
 }

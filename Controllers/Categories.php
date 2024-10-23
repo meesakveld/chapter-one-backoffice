@@ -10,7 +10,7 @@ class CategoriesController extends BaseController {
     public static function index () {
         $categories = Category::getCatergoriesWithChildren();
         
-        self::loadView('/categories', [
+        self::loadView('/category/categories', [
             'title' => 'Categories',
             'domain' => 'Books',
             'categories' => $categories,
@@ -25,7 +25,7 @@ class CategoriesController extends BaseController {
 
         $books = Book::booksWithDataWithCategoryId($category->id);        
 
-        self::loadView('/category', [
+        self::loadView('/category/category', [
             'title' => $category->name,
             'category' => $category,
             'books' => $books,

@@ -10,7 +10,7 @@ class BooksController extends BaseController {
     public static function index () {
         $books = Book::booksWithData();
         
-        self::loadView('/books', [
+        self::loadView('/book/books', [
             'title' => 'Books',
             'domain' => 'Books',
             'books'=> $books,
@@ -26,7 +26,7 @@ class BooksController extends BaseController {
 
         $orders = Order::getOrdersWithBookId($id);
 
-        self::loadView('/book', [
+        self::loadView('/book/book', [
             'title' => $book->title,
             'domain' => 'Books',
             'book'=> $book,

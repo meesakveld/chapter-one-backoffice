@@ -11,7 +11,7 @@ class AuthorsController extends BaseController {
 
         $authors = Author::all();
         
-        self::loadView('/authors', [
+        self::loadView('/author/authors', [
             'title' => 'Authors',
             'domain' => 'Books',
             'authors' => $authors,
@@ -25,7 +25,7 @@ class AuthorsController extends BaseController {
         }
         $books = Book::booksWithDataWithAuthorId($author->id);
 
-        self::loadView('/author', [
+        self::loadView('/author/author', [
             'title' => $author->name,
             'author' => $author,
             'books' => $books,

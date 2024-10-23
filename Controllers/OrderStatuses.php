@@ -10,7 +10,7 @@ class OrderStatusesController extends BaseController {
 
         $statuses = Status::getStatusesWithChildren();
         
-        self::loadView('/order-statuses', [
+        self::loadView('/order-status/order-statuses', [
             'title' => 'Statuses',
             'domain' => 'Orders',
             'statuses' => $statuses,

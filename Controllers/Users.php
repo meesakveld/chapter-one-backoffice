@@ -10,7 +10,7 @@ class UsersController extends BaseController {
 
         $users = User::all();
         
-        self::loadView('/users', [
+        self::loadView('/user/users', [
             'title' => 'Users',
             'domain' => 'Users',
             'users' => $users,

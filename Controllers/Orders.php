@@ -10,7 +10,7 @@ class OrdersController extends BaseController {
 
         $orders = Order::getOrdersWithChildren();
         
-        self::loadView('/orders', [
+        self::loadView('/order/orders', [
             'title' => 'Orders',
             'domain' => 'Orders',
             'orders' => $orders,

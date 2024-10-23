@@ -11,7 +11,7 @@ class PublishersController extends BaseController {
 
         $publishers = Publisher::all();
         
-        self::loadView('/publishers', [
+        self::loadView('/publisher/publishers', [
             'title' => 'Publishers',
             'domain' => 'Books',
             'publishers' => $publishers,
@@ -25,7 +25,7 @@ class PublishersController extends BaseController {
         }
         $books = Book::booksWithDataWithPublisherId($publisher->id);
 
-        self::loadView('/publisher', [
+        self::loadView('/publisher/publisher', [
             'title' => $publisher->name,
             'publisher' => $publisher,
             'books' => $books,

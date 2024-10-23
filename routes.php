@@ -1,6 +1,5 @@
 <?php
 
-//$router->get('/', function() { echo 'Dit is de index vanuit de route'; });
 $router->setNamespace('\App\Controllers');
 
 // Overviews
@@ -19,3 +18,4 @@ $router->get('/authors/(\d+)','AuthorsController@author');
 $router->get('/publishers/(\d+)','PublishersController@publisher');
 $router->get('/categories/(\d+)','CategoriesController@category');
 $router->get('/users/(\d+)','UsersController@user');
+$router->get('/orders/(\d+)','OrdersController@order');

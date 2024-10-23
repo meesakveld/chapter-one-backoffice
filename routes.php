@@ -18,3 +18,4 @@ $router->get('/books/(\d+)','BooksController@book');
 $router->get('/authors/(\d+)','AuthorsController@author');
 $router->get('/publishers/(\d+)','PublishersController@publisher');
 $router->get('/categories/(\d+)','CategoriesController@category');
+$router->get('/users/(\d+)','UsersController@user');

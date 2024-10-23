@@ -27,6 +27,7 @@ class CategoriesController extends BaseController {
 
         self::loadView('/category/category', [
             'title' => $category->name,
+            'domain' => 'Books',
             'category' => $category,
             'books' => $books,
         ]);

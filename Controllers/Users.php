@@ -17,4 +17,15 @@ class UsersController extends BaseController {
         ]);
     }
 
+    public static function user ($id) {
+
+        $user = User::find($id);
+
+        self::loadView('/user/user', [
+            'title' => 'User',
+            'domain' => 'Users',
+            'user' => $user,
+        ]);
+    }
+
 }

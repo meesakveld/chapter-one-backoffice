@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BookOrder;
 use App\Models\Order;
 
 class OrdersController extends BaseController {
@@ -17,4 +18,18 @@ class OrdersController extends BaseController {
         ]);
     }
 
+    public static function order ($id) {
+        $order = Order::getOrderWithId($id);
+        if (!$order) {
+            self::LoadView('/404');
+        }
+
+        self::loadView('/order/order', [
+            'title' => $order->id,
+            'domain' => 'Orders',
+            'order' => $order,
+        ]);
+
+
+    }
 }

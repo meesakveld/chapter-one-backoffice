@@ -23,7 +23,7 @@ class PublishersController extends BaseController {
         if (!$publisher) {
             self::LoadView('/404');
         }
-        $books = Book::booksWithDataWithAuthorId($publisher->id);
+        $books = Book::booksWithDataWithPublisherId($publisher->id);
 
         self::loadView('/publisher', [
             'title' => $publisher->name,

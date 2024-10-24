@@ -34,4 +34,12 @@ class BooksController extends BaseController {
         ]);
     }
 
+    // ———— API ————
+    public static function api () {
+        $searchQuery = $_GET['q'] ?? '';
+
+        $books = Book::booksWithDataWithSearch($searchQuery);
+        echo json_encode($books);
+    }
+
 }

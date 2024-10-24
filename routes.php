@@ -36,3 +36,6 @@ $router->post('/publishers/(\d+)/delete','PublishersController@delete');
 $router->post('/categories/add','CategoriesController@create');
 $router->post('/categories/(\d+)/edit','CategoriesController@update');
 $router->post('/categories/(\d+)/delete','CategoriesController@delete');
+
+// API
+$router->get('/api/books','BooksController@api');

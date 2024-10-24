@@ -33,4 +33,36 @@ class PublishersController extends BaseController {
         ]);
     }
 
+    public static function add () {
+        self::loadView('/publisher/add', [
+            'title' => 'Add Publisher',
+            'domain' => 'Books',
+        ]);
+    }
+
+    // ———— CRUD ————
+    public static function create () {
+        if( !isset($_FILES['logo']) || !$_FILES['logo']['size'] > 0 ) {
+            exit('No file uploaded');
+        }
+
+        $publisher = new Publisher();
+        $publisher->name = $_POST['name'];
+        $publisher->email = $_POST['email'];
+
+        $tmp_location = $_FILES['logo']['tmp_name'];
+        $file_name = $_FILES['logo']['name'];
+        $uuid = uniqid();
+        $newLocation = '../public/uploaded-images/' . $uuid . '-' . $file_name;
+
+        move_uploaded_file($tmp_location, $newLocation);
+
+        $publisher->logo_path = $uuid . '-' . $file_name;
+        $publisher->save();
+
+        print_r($publisher);
+
+        header('Location: /publishers/');
+    }
+
 }

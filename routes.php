@@ -19,3 +19,9 @@ $router->get('/publishers/(\d+)','PublishersController@publisher');
 $router->get('/categories/(\d+)','CategoriesController@category');
 $router->get('/users/(\d+)','UsersController@user');
 $router->get('/orders/(\d+)','OrdersController@order');
+
+// Add pages
+$router->get('/publishers/add','PublishersController@add');
+
+// CRUD
+$router->post('/publishers/add','PublishersController@create');

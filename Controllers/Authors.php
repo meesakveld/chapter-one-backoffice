@@ -9,12 +9,22 @@ class AuthorsController extends BaseController {
 
     public static function index () {
 
-        $authors = Author::all();
+        // Get search params
+        $search = $_GET['search'] ?? '';
+        $filterNationality = $_GET['filter-nationality'] ?? '';
+        $sortName = $_GET['sort-name'] ?? 'asc';
+
+        $authors = Author::allWithSearchAndFilter($search, $filterNationality, $sortName);
+        $nationalities = Author::getUniqueNationalitiesFromAuthors();
         
         self::loadView('/author/authors', [
             'title' => 'Authors',
             'domain' => 'Books',
             'authors' => $authors,
+            'nationalities' => $nationalities,
+            'search' => $search,
+            'filterNationality' => $filterNationality,
+            'sortName' => $sortName,
         ]);
     }
 

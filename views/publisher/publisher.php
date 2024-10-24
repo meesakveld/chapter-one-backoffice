@@ -24,7 +24,7 @@
 
                 <div>
                     <p class="font-normal text-c-blue">Email:</p>
-                    <p class="font-medium text-lg"><a href="mailto:<?= $publisher->email ?>"><?= $publisher->email ?></a></p>
+                    <p class="font-medium text-lg"><a class="hover:underline" href="mailto:<?= $publisher->email ?>"><?= $publisher->email ?></a></p>
                 </div>
 
                 <div>

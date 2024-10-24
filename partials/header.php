@@ -17,5 +17,9 @@
         <a href="/orders" class="hover:text-c-blue transition-colors duration-150 <?= $domain === 'Orders' ? 'font-bold text-c-blue' : '' ?>">
             Orders
         </a>
+
+        <a href="/file-manager" class="hover:text-c-blue transition-colors duration-150 <?= $domain === 'File Manager' ? 'font-bold text-c-blue' : '' ?>">
+            File Manager
+        </a>
     </nav>
 </header> 

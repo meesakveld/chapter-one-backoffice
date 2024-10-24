@@ -12,6 +12,8 @@ $router->get('/categories','CategoriesController@index');
 $router->get('/orders','OrdersController@index');
 $router->get('/order-statuses','OrderStatusesController@index');
 
+$router->get('/file-manager','FileManagerController@index');
+
 // Detail pages
 $router->get('/books/(\d+)','BooksController@book');
 $router->get('/authors/(\d+)','AuthorsController@author');

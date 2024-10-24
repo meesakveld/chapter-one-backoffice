@@ -20,8 +20,8 @@ class OrdersController extends BaseController {
 
     public static function order ($id) {
         $order = Order::getOrderWithId($id);
-        if (!$order) {
-            self::LoadView('/404');
+        if (!$order->id) {
+            return self::LoadView('/404');
         }
 
         self::loadView('/order/order', [

@@ -19,8 +19,8 @@ class CategoriesController extends BaseController {
 
     public static function category ($id) {
         $category = Category::getCategoryWithChildren($id);
-        if (!$category) {
-            self::LoadView('/404');
+        if (!$category->id) {
+            return self::LoadView('/404');
         }
 
         $books = Book::booksWithDataWithCategoryId($category->id);        

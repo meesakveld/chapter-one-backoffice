@@ -20,7 +20,7 @@ class PublishersController extends BaseController {
 
     public static function publisher ($id) {
         $publisher = Publisher::find($id);
-        if (!$publisher || !$publisher->id) {
+        if (!$publisher->id) {
             return self::LoadView('/404');
         }
         $books = Book::booksWithDataWithPublisherId($publisher->id);

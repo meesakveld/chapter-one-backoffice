@@ -30,8 +30,8 @@ class AuthorsController extends BaseController {
 
     public static function author ($id) {
         $author = Author::find($id);
-        if (!$author) {
-            self::LoadView('/404');
+        if (!$author->id) {
+            return self::LoadView('/404');
         }
         $books = Book::booksWithDataWithAuthorId($author->id);
 

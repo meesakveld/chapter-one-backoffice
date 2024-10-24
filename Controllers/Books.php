@@ -19,9 +19,8 @@ class BooksController extends BaseController {
 
     public static function book ($id) {
         $book = Book::bookWithData($id);
-        if (! $book) {
-            self::loadView('/404');
-            return;
+        if (!$book->id) {
+            return self::loadView('/404');
         }
 
         $orders = Order::getOrdersWithBookId($id);

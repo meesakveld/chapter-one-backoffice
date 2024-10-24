@@ -21,6 +21,11 @@ class UsersController extends BaseController {
     public static function user ($id) {
 
         $user = User::find($id);
+
+        if (!$user->id) {
+            return self::loadView('/404');
+        }
+
         $orders = Order::getOrdersWithUserId($id);
 
         self::loadView('/user/user', [

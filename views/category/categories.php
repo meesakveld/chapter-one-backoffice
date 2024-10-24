@@ -21,7 +21,10 @@
     </div>
 
     <div class="flex flex-col gap-8 w-full bg-c-blue-very-light rounded-lg p-4">
-        <h2 class="text-2xl font-semibold">All categories</h2>
+        <div class="flex justify-between">
+            <h2 class="text-2xl font-semibold">All categories</h2>
+            <a href="/categories/add" class="bg-c-blue-dark text-white px-4 py-1 rounded-lg flex items-center hover:underline">Add</a>
+        </div>
 
         <div class="overflow-x-auto">
             <table class="min-w-[1200px] w-full border-collapse border border-c-blue-dark">

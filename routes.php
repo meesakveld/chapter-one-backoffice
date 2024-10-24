@@ -24,9 +24,13 @@ $router->get('/orders/(\d+)','OrdersController@order');
 // CRUD pages
 $router->get('/publishers/add','PublishersController@add');
 $router->get('/publishers/(\d+)/edit','PublishersController@edit');
+$router->get('/categories/add','CategoriesController@add');
+$router->get('/categories/(\d+)/edit','CategoriesController@edit');
 
 // CRUD actions
 $router->post('/publishers/add','PublishersController@create');
 $router->post('/publishers/(\d+)/edit','PublishersController@update');
 $router->post('/publishers/(\d+)/delete','PublishersController@delete');
-
+$router->post('/categories/add','CategoriesController@create');
+$router->post('/categories/(\d+)/edit','CategoriesController@update');
+$router->post('/categories/(\d+)/delete','CategoriesController@delete');

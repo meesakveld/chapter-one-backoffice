@@ -61,4 +61,23 @@ class Category extends BaseModel {
         return $result;
     }
 
+    public function save () {
+        $query = $this->db->prepare('INSERT INTO categories (name, description, parent_id) VALUES (:name, :description, :parent_id)');
+        $query->execute([
+            'name' => $this->name,
+            'description' => $this->description,
+            'parent_id' => $this->parent_id,
+        ]);
+    }
+
+    public function update () {
+        $query = $this->db->prepare('UPDATE categories SET name = :name, description = :description, parent_id = :parent_id WHERE id = :id');
+        $query->execute([
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'parent_id' => $this->parent_id,
+        ]);
+    }
+
 }

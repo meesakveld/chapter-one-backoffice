@@ -26,6 +26,6 @@ $router->get('/publishers/add','PublishersController@add');
 
 // CRUD actions
 $router->post('/publishers/add','PublishersController@create');
-$router->post('/publishers/(d+)/edit','PublishersController@edit');
-$router->post('/publishers/(d+)/delete','PublishersController@delete');
+$router->post('/publishers/(\d+)/edit','PublishersController@edit');
+$router->post('/publishers/(\d+)/delete','PublishersController@delete');
 

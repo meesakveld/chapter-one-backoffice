@@ -23,9 +23,10 @@ $router->get('/orders/(\d+)','OrdersController@order');
 
 // CRUD pages
 $router->get('/publishers/add','PublishersController@add');
+$router->get('/publishers/(\d+)/edit','PublishersController@edit');
 
 // CRUD actions
 $router->post('/publishers/add','PublishersController@create');
-$router->post('/publishers/(\d+)/edit','PublishersController@edit');
+$router->post('/publishers/(\d+)/edit','PublishersController@update');
 $router->post('/publishers/(\d+)/delete','PublishersController@delete');
 

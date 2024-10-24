@@ -15,23 +15,38 @@
 
     <div class="flex flex-col gap-8">
 
-        <div class="flex flex-col gap-3 border border-c-gray rounded-lg p-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <p class="font-normal text-c-blue">Name:</p>
-                    <p class="font-medium text-lg"><?= $title ?></p>
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-3 border border-c-gray rounded-lg p-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-normal text-c-blue">Name:</p>
+                        <p class="font-medium text-lg"><?= $title ?></p>
+                    </div>
+
+                    <div>
+                        <p class="font-normal text-c-blue">Email:</p>
+                        <p class="font-medium text-lg"><a class="hover:underline" href="mailto:<?= $publisher->email ?>"><?= $publisher->email ?></a></p>
+                    </div>
+
+                    <div>
+                        <p class="font-normal text-c-blue">Logo:</p>
+                        <img src="/uploaded-images/<?= $publisher->logo_path ?>" alt="<?= $publisher->name ?>" class="w-32 h-32 object-contain pt-2">
+                    </div>
+
                 </div>
 
-                <div>
-                    <p class="font-normal text-c-blue">Email:</p>
-                    <p class="font-medium text-lg"><a class="hover:underline" href="mailto:<?= $publisher->email ?>"><?= $publisher->email ?></a></p>
-                </div>
+            </div>
 
-                <div>
-                    <p class="font-normal text-c-blue">Logo:</p>
-                    <img src="/uploaded-images/<?= $publisher->logo_path ?>" alt="<?= $publisher->name ?>" class="w-32 h-32 object-contain pt-2">
-                </div>
+            <div class="flex gap-2">
+                <a href="/publishers/<?= $publisher->id; ?>/edit" class="bg-c-blue-dark text-white px-4 py-1 rounded-lg hover:underline">
+                    Edit
+                </a>
 
+                <form action="/publishers/<?= $publisher->id; ?>/delete" method="post">
+                    <button class="bg-red-500 text-white px-4 py-1 rounded-lg hover:underline" type="submit">
+                        Delete
+                    </button>
+                </form>
             </div>
 
         </div>

@@ -42,4 +42,28 @@ class AuthorsController extends BaseController {
             'books' => $books,
         ]);
     }
+
+    // ——— CRUD API ———
+    public static function APIcreate () {
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        $name = $data['name'];
+        $bio = $data['bio'];
+        $nationality = $data['nationality'];
+
+        $author = new Author();
+        $author->name = $name;
+        $author->bio = $bio;
+        $author->nationality = $nationality;
+
+        $author->save();
+
+        $message = "Author $name has been created";
+
+        echo json_encode([
+            'message' => $message,
+            'author' => $author,
+        ]);
+
+    }
 }

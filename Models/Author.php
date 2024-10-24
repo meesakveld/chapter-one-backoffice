@@ -53,4 +53,19 @@ class Author extends BaseModel {
         return $db_items;
     }
 
+    public function save () {
+        $sql = "
+            INSERT INTO authors (name,bio,nationality)
+            VALUES (:name,:bio,:nationality);
+        ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'name' => $this->name,
+            'bio' => $this->bio,
+            'nationality' => $this->nationality,
+        ]);
+
+        return $this->db->lastInsertId();
+    }
+
 }

@@ -39,3 +39,4 @@ $router->post('/categories/(\d+)/delete','CategoriesController@delete');
 
 // API
 $router->get('/api/books','BooksController@api');
+$router->post('/api/authors/add','AuthorsController@APIcreate');

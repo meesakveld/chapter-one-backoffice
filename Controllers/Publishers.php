@@ -60,8 +60,6 @@ class PublishersController extends BaseController {
         $publisher->logo_path = $uuid . '-' . $file_name;
         $publisher->save();
 
-        print_r($publisher);
-
         header('Location: /publishers/');
     }
 

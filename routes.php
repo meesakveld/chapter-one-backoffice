@@ -20,8 +20,12 @@ $router->get('/categories/(\d+)','CategoriesController@category');
 $router->get('/users/(\d+)','UsersController@user');
 $router->get('/orders/(\d+)','OrdersController@order');
 
-// Add pages
+
+// CRUD pages
 $router->get('/publishers/add','PublishersController@add');
 
-// CRUD
+// CRUD actions
 $router->post('/publishers/add','PublishersController@create');
+$router->post('/publishers/(d+)/edit','PublishersController@edit');
+$router->post('/publishers/(d+)/delete','PublishersController@delete');
+

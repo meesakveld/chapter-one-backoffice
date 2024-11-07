@@ -1,119 +1,69 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/RN63TLFQ)
-# Base MVC
+![Banner](.github/banner.png)
 
-Dit project bevat een basis opzet van MVC (Model View Controller). En helpt je om sneller te kunnen ontwikkelen, code logisch te groeperen en onderdelen te hergebruiken.
+# Chapter One
 
-## Onderdelen
+## Introduction
 
-| Functionaliteit | Omschrijving | Locatie |
-| ----------- | ----------- | ----------- |
-| Routing | Beslist wat er moet gebeuren met een URL en stuurt door naar Controller | /app.php |
-| Controller | Krijgt een request binnen op een method, haalt data op uit de model en stuurt dit door naar de juiste view | /Controllers/ |
-| Models | Staat in contact met de database, voert sql opdrachten uit en stuurt resultaat terug | /Models |
-| Views | Bevat de inhoud of een deel van de inhoud van een pagina | /views/... |
-| Templates | Bevat de volledige layout van de pagina | /views/_templates/... |
+The backoffice for Chapter One is a custom backoffice that is built with php and mysql. It is a simple backoffice that manage all tables in the database. The backoffice is setup to manage Books, Users, Orders and all their specific data and relations. The backoffice is build with a custom MVC structure and is build with the following technologies:
 
-## Installatie
+- PHP
+- MySQL
+- HTML
+- CSS (Tailwind)
+- Chart.js
 
-Installeer de nodige packages via [composer](https://getcomposer.org/).
+In the project I've used partials to organize the code and make it more readable.
+
+<br>
+
+## Features
+
+The backoffice has the following features:
+
+- Dashboard with statistics
+- Manage Books (Books, Authors, Publisheres & Categories)
+- Manage Users (Orders & Statuses)
+- Manage Orders
+- File management
+
+<br>
+
+## Installation
+
+Install the necessary packages via [composer](https://getcomposer.org/).
 
 ```
 ddev composer install
 ```
 
-
-## Router
-
-Nieuwe pagina's of bereikbare URL's moeten aangemaakt worden via de router class. De routes kunnen aangemaakt worden in `routes.php`
-
-Hier bouw je de url op en stuur je deze door naar de desbetreffende controller en een van zijn methods. Variabele elementen in de URL kan je toevoegen via regular expressions.
-
-bv:
+To start the project, you can use the following command:
 
 ```
-$router->get('/cocktail/(\d+)', 'App\Controllers\CocktailController@detail');
+ddev start
 ```
 
-> Voor de routing gebruik ik een externe library. 
-> [Meer info over de mogelijkheden kan je terugvinden op de GitHub pagina](https://github.com/bramus/router)
-
-## Controller
-
-Deze controller stuurt dus de request door naar de desbetreffende  method. CocktailController@detail wil dus zeggen dat bij de url http://localhost:8888/cocktail/1 de method `detail` wordt aanroepen in de `CocktailController` met als parameter '1'.
-
-Een controller staat dus in voor het bekijken van de request en het versturen van de uiteindelijke response.
-
-Je kan hier validatie doen van data afkomstig van de request URI of via een formulier ($_POST).
-Daarnaast kan je ook data ophalen uit cookies of de session.
-
-Afhankelijk van de soort pagina zal de controller dus data moeten ophalen. Bijvoorbeeld via een of meerdere models. Bv: `Cocktail::find($id)`
-
-Met behulp van de views en de nodige data zal de response HTML opgebouwd worden via de method `loadView` uit de `BaseController`.
+The project is now running on the following URL:
 
 ```
-<?php
-
-namespace App\Controllers;
-use App\Models\Cocktail;
-
-class CocktailController extends BaseController {
-
-    public static function detail ($id) {
-        $cocktail = Cocktail::find($id);
-
-        self::loadView('/cocktail/detail', [
-            'cocktail' => $cocktail
-        ]);
-    }
-
-}
+https://127.0.0.1:6001
 ```
 
-## Model
+<br>
 
-Een model is een voorstelling van een object uit onze database. In veel gevallen zal een tabel dus een bijhorende model hebben. Indien we een lege model class maken en afleiden van de `BaseModel` dan zitten hier reeds basis methods in zoals `getAll`, `find` of `delete`.
+## Databasemodel
 
-Willen we niet deze standaard methods dan moeten we een nieuwe method aanmaken in deze nieuw aangemaakte model. Wil je een method aanmaken dat bruikbaar is voor alle models dan kan dit in de `BaseModel`.
+The database model is build with the following tables:
 
-```
-<?php
-namespace App\Models;
+![Database model](.github/database-model.png)
 
-class Cocktail extends BaseModel {
-    public function MijnSpecifiekeMethod() {
-        //eigen code...
-    }
-}
-```
+<br>
 
-## Views
+## License
+This project is distributed under the [MIT License](LICENSE).
 
-De view wordt opgeroepen vanuit de Controller of vanuit een andere view. En stelt de html van de pagina voor.
 
-Hierin zit enkel de data, niet de volledige html. Deze zit in de template. 
+## Contact
+If you have any questions or need further assistance, please feel free to contact me on LinkedIn or Instagram.
 
-Hieronder een voorbeeld van de view `/views/cocktail/detail.php`.
-
-```
-<h1><?= $cocktail->name; ?></h1>
-<img src="/images/cocktails/<?= $cocktail->photo; ?>">
-<p><?= $cocktail->description; ?></p>
-```
-
-### Layouts
-
-De layout omvat de volledige html structuur met `<head>` en `<body>`. De variabele `$content` wordt vervangen door de inhoud van de view die werd aangeroepen vanuit de controller. En kan je aanpassen in `/views/_layout/main.php`. Je kan bij de loadView als 3e parameter een andere layout meegeven
-
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    ...
-</head>
-<body>
-    <main>
-        <?= $content; ?>
-    </main>
-</body>
-</html>
-```
+<a href="https://www.linkedin.com/in/meesakveld/"><img align="left" src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/linkedin.svg" alt="Mees Akveld | LinkedIn" width="21px"/></a>
+<a href="https://instagram.com/meesakveld"><img align="left" src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/instagram.svg" alt="Mees Akveld | Instagram" width="21px"/></a>
